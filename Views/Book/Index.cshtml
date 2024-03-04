@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BookManagement.Models.Book>
+
+<h2>Book Management</h2>
+
+<p>
+    <a class="btn btn-primary btn-size" asp-action="Create">Create Book</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishYear)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishYear)
+                </td>
+                <td>
+                    <a class="btn btn-secondary btn-size" asp-action="Edit" asp-route-id="@item.BookId">Edit</a>
+                    <a class="btn btn-info btn-size" asp-action="Details" asp-route-id="@item.BookId">Details</a>
+                    <a class="btn btn-danger btn-size" asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
